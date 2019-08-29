@@ -24,8 +24,8 @@ export class FormularioAutor extends Component{
           type:'post',
           data: JSON.stringify({nome:this.state.nome,email:this.state.email,senha:this.state.senha}),
           success: function(resposta){
-            this.setState({lista:resposta}).bind(this);
-          },
+            this.props.callbackAtualizaListagem(resposta);
+          }.bind(this),
           error: function(resposta){
               console.log("erro");
           }
@@ -103,6 +103,7 @@ export default class AutorBox extends Component{
       constructor() {
         super();
         this.state = {lista : []};
+        this.atualizaListagem = this.atualizaListagem.bind(this);
      
       }
     
@@ -113,7 +114,7 @@ export default class AutorBox extends Component{
             dataType: 'json',
             success:function(resposta){
               console.log("chegou a resposta");
-              this.props.callbackAtualizaListagem(resposta);
+              this.setState({lista:resposta});
               }.bind(this)
         }
       );
