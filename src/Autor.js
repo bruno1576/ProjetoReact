@@ -31,8 +31,6 @@ export class FormularioAutor extends Component{
           }
     
         });
-
-       
         
       }
       setNome(evento){
