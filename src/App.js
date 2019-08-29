@@ -18,21 +18,18 @@ class App extends Component {
 
     <div id="menu">
         <div className="pure-menu">
-            <a className="pure-menu-heading" href="#">Company</a>
+            <a className="pure-menu-heading" href="#">Salario</a>
 
             <ul className="pure-menu-list">
     <li className="pure-menu-item"><Link to="/" className="pure-menu-link">Home</Link></li>
-    <li className="pure-menu-item"><Link to="/autor"className="pure-menu-link">Autor</Link></li>
-    <li className="pure-menu-item"><a href="#" className="pure-menu-link">Livro</a></li>
+    <li className="pure-menu-item"><Link to="/cadastra"className="pure-menu-link">Cadastra</Link></li>
+    <li className="pure-menu-item"><Link to="/salarios" className="pure-menu-link">Salarios</Link></li>
 </ul>
         </div>
     </div>
 
         <div id="main">
 
-            <div className="header">
-              <h1>Home</h1>
-            </div>
             
             <div className="content" id="content">
               <div className="header">
