@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import InputCustomizado from './componentes/InputCustomizado';
-
+import PubSub from 'pubsub-js';
 export class FormularioAutor extends Component{
   
     constructor() {
@@ -24,13 +24,17 @@ export class FormularioAutor extends Component{
           type:'post',
           data: JSON.stringify({nome:this.state.nome,email:this.state.email,senha:this.state.senha}),
           success: function(resposta){
-            this.props.callbackAtualizaListagem(resposta);
+            PubSub.publish('atualiza-lista-autores',resposta);
+
+            
           }.bind(this),
           error: function(resposta){
               console.log("erro");
           }
     
         });
+
+        
         
       }
       setNome(evento){
@@ -105,8 +109,7 @@ export default class AutorBox extends Component{
      
       }
     
-      componentWillMount(){
-        console.log("willMount");
+      componentDidMount(){
         $.ajax({
             url:"http://cdc-react.herokuapp.com/api/autores",
             dataType: 'json',
@@ -116,16 +119,16 @@ export default class AutorBox extends Component{
               }.bind(this)
         }
       );
-      }
-      atualizaListagem(novaLista) {
-        this.setState({lista:novaLista});
-      }
-    
       
+      PubSub.subscribe('atualiza-lista-autores', function(topico,novaLista){
+        this.setState({lista:novaLista});
+      }.bind(this));
+      }
+        
     render() {
         return(
           <div>
-            <FormularioAutor callbackAtualizaListagem={this.atualizaListagem}/>
+            <FormularioAutor  />
             <TabelaAutores lista={this.state.lista}/>
           </div>
         );
