@@ -65,24 +65,7 @@ export class FormularioAutor extends Component{
 
 }
 export class TabelaAutores extends Component {
-    constructor() {
-        super();
-        this.state = {lista : []};
-     
-      }
-    
-      componentWillMount(){
-        console.log("willMount");
-        $.ajax({
-            url:"http://cdc-react.herokuapp.com/api/autores",
-            dataType: 'json',
-            success:function(resposta){
-              console.log("chegou a resposta");
-              this.setState({lista:resposta});
-              }.bind(this)
-        }
-      );
-      }
+  
     render() {
         return (
             <div>            
@@ -95,7 +78,7 @@ export class TabelaAutores extends Component {
               </thead>
               <tbody>
                 {
-                  this.state.lista.map(function(autor){
+                  this.props.lista.map(function(autor){
                   return (
                     <tr key ={autor}>
                       <td>{autor.nome}</td>
@@ -113,3 +96,39 @@ export class TabelaAutores extends Component {
 
     }
 }
+export default class AutorBox extends Component{
+    atualizaListagem(novaLista) {
+        this.setState({lista:novaLista});
+      }
+      constructor() {
+        super();
+        this.state = {lista : []};
+     
+      }
+    
+      componentWillMount(){
+        console.log("willMount");
+        $.ajax({
+            url:"http://cdc-react.herokuapp.com/api/autores",
+            dataType: 'json',
+            success:function(resposta){
+              console.log("chegou a resposta");
+              this.props.callbackAtualizaListagem(resposta);
+              }.bind(this)
+        }
+      );
+      }
+      atualizaListagem(novaLista) {
+        this.setState({lista:novaLista});
+      }
+    
+      
+    render() {
+        return(
+          <div>
+            <FormularioAutor callbackAtualizaListagem={this.atualizaListagem}/>
+            <TabelaAutores lista={this.state.lista}/>
+          </div>
+        );
+      }
+    }
