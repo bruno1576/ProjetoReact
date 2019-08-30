@@ -5,7 +5,6 @@ Necessario utilziar o npm install create-react-app na pasta do projeto
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Requisitos!
 
 
 In the project directory, you can run:
