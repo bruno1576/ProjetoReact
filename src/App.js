@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './css/pure-min.css';
 import './css/side-menu.css';
-import {FormularioAutor,TabelaAutores} from './Autor';
-import AutorBox from './Autor';
+import {FormularioAutor,TabelaAutores} from './Cadastro';
+import AutorBox from './Cadastro';
 import PubSub from 'pubsub-js';
 import {Link} from 'react-router'
 class App extends Component {
