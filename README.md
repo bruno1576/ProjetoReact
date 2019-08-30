@@ -1,7 +1,7 @@
 ## Requisitos!
 
-Necessario instalar o node.js
-Necessario utilziar o npm install create-react-app
+Necessario instalar o node.js<br>
+Necessario utilziar o npm install create-react-app na pasta do projeto
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
