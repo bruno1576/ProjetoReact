@@ -1,6 +1,12 @@
+## Requisitos!
+
+Necessario instalar o node.js
+Necessario utilziar o npm install create-react-app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Requisitos!
+
 
 In the project directory, you can run:
 
